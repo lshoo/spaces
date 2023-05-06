@@ -3,7 +3,7 @@ authors = ["lshoo <lshoo36@gmail.com>"]
 description = "Things and thinks about lshoo"
 name = "lshoo"
 trigger = { type = "http", base = "/" }
-version = "1.0.1"
+version = "1.0.2"
 
 [[component]]
 id = "spaces"
