@@ -1,0 +1,14 @@
+spin_version = "1"
+authors = ["lshoo <lshoo36@gmail.com>"]
+description = "Things and thinks about lshoo"
+name = "lshoo"
+trigger = { type = "http", base = "/" }
+version = "1.0.1"
+
+[[component]]
+id = "spaces"
+source = "target/wasm32-wasi/release/spaces.wasm"
+[component.trigger]
+route = "/..."
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
