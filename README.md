@@ -21,7 +21,8 @@ Executing the build command for component hello-rust: cargo build --target wasm3
 Successfully ran the build command for the Spin components.
 
 # Run the application locally.
-$ spin up --env DB_URL="{pg-url-yourself}
+# `--key-value` options in `spin up` require version 1.2.0
+$ spin up --key-value DB_URL="{pg-url-yourself}
 Logging component stdio to ".spin/logs/"
 
 Serving http://127.0.0.1:3000
@@ -33,8 +34,7 @@ Available Routes:
 
 ```bash
 # Deploy to Spin Cloud
-$ export DB_URL="{pg-url-yourself}
-$ spin deploy --environment-name DB_URL
+$ spin deploy --key-value DB_URL="{pg-url-yourself}
 
 Deploying...
 Waiting for application to become ready...... ready

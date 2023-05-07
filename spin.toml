@@ -3,11 +3,13 @@ authors = ["lshoo <lshoo36@gmail.com>"]
 description = "Things and thinks about lshoo"
 name = "lshoo"
 trigger = { type = "http", base = "/" }
-version = "1.0.2"
+version = "1.0.5"
 
 [[component]]
 id = "spaces"
 source = "target/wasm32-wasi/release/spaces.wasm"
+key_value_stores = ["default"]
+
 [component.trigger]
 route = "/..."
 [component.build]
