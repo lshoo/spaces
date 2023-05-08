@@ -51,3 +51,26 @@ impl TryFrom<&pg::Row> for Article {
         ))
     }
 }
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct ArticleRequest {
+    pub title: String,
+    pub content: String,
+    pub author: String,
+    pub coauthor: Option<String>,
+    pub category: Option<String>,
+}
+
+impl ArticleRequest {
+    pub fn build(&self, id: i64, created_at: i64) -> Article {
+        Article {
+            id,
+            title: self.title.clone(),
+            content: self.content.to_owned(),
+            author: self.author.clone(),
+            coauthor: self.coauthor.clone(),
+            category: self.category.clone(),
+            created_at,
+        }
+    }
+}
