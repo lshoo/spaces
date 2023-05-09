@@ -1,3 +1,5 @@
+
+use bytes::Bytes;
 use serde::{Deserialize, Serialize};
 use spin_sdk::pg::{self, Decode};
 
@@ -53,7 +55,7 @@ impl TryFrom<&pg::Row> for Article {
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
-pub struct ArticleRequest {
+pub struct CreateArticleRequest {
     pub title: String,
     pub content: String,
     pub author: String,
@@ -61,7 +63,7 @@ pub struct ArticleRequest {
     pub category: Option<String>,
 }
 
-impl ArticleRequest {
+impl CreateArticleRequest {
     pub fn build(&self, id: i64, created_at: i64) -> Article {
         Article {
             id,
@@ -74,3 +76,15 @@ impl ArticleRequest {
         }
     }
 }
+
+impl TryFrom<Option<Bytes>> for CreateArticleRequest {
+    fn try_from(value: Option<Bytes>) -> Result<Self, Self::Error> {
+        match value {
+            Some(b) => serde_json::from_slice(&b).map_err(anyhow::Error::from),
+            None => anyhow::bail!("No body"),
+        }
+    }
+
+    type Error = anyhow::Error;
+}
+

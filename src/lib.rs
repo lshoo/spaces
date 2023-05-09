@@ -84,3 +84,7 @@ impl<T: Serialize> JsonResponse<T> {
         }
     }
 }
+
+pub fn to_json<T: Serialize>(data: JsonResponse<T>) -> Result<String> {
+    serde_json::to_string(&data).map_err(anyhow::Error::from)
+}

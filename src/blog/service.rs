@@ -3,7 +3,7 @@ use spin_sdk::pg::{self, Decode, ParameterValue};
 
 use crate::config::get_db_url;
 
-use super::{Article, ArticleRequest};
+use super::{Article, CreateArticleRequest};
 
 pub(crate) fn all_articles() -> Result<Vec<Article>> {
     let db_url = get_db_url()?;
@@ -27,7 +27,7 @@ pub(crate) fn get_article_by_id(id: i64) -> Result<Option<Article>> {
     Ok(resp)
 }
 
-pub(crate) fn save_articles(art: ArticleRequest) -> Result<u64> {
+pub(crate) fn save_articles(art: CreateArticleRequest) -> Result<u64> {
     let db_url = get_db_url()?;
     let sql = "INSERT INTO public.articles (title, content, author, coauthor, category) VALUES ($1, $2, $3, $4, $5) RETURNING id";
 
