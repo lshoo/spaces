@@ -21,3 +21,6 @@ INSERT INTO articles (title, content, author, category) VALUES
     'S. Baldrick',
 	'War'
 );
+
+ALTER TABLE articles ADD COLUMN available BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE articles ADD COLUMN updated_at BIGINT NOT NULL DEFAULT (extract(epoch from now()) * 1000);

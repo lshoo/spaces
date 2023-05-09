@@ -20,7 +20,9 @@ fn process(req: Request) -> Result<Response> {
 
     router.get("/api/article/:id", blog::handle_get);
     router.get("/api/article", blog::handle_list);
-    router.post("api/article", blog::handle_save);
+    router.post("/api/article", blog::handle_save);
+    router.put("/api/article/:id", blog::handle_update);
+    router.delete("/api/article/:id", blog::handle_delete);
     router.get("/api/pg_pid", pg_backend_pid);
     router.any("/*", echo_wildcard);
 
