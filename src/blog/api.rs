@@ -18,17 +18,17 @@ fn build_response_option(code: u16, body: Option<impl Into<String>>) -> Result<R
         .body(body.map(|b| b.into().into()))?)
 }
 
-pub fn get_article(_req: Request, params: Params) -> Result<Response> {
+pub fn handle_get(_req: Request, params: Params) -> Result<Response> {
     let article_id = params.get("id").expect("missing id").parse::<i64>()?;
     let body = serde_json::to_string(&get_article_by_id(article_id)?)?;
     build_response(http::StatusCode::OK.as_u16(), body)
 }
 
-pub fn list_article(_req: Request, _param: Params) -> Result<Response> {
+pub fn handle_list(_req: Request, _param: Params) -> Result<Response> {
     build_response(200, serde_json::to_string(&all_articles()?)?)
 }
 
-pub fn save(req: Request, _param: Params) -> Result<Response> {
+pub fn handle_save(req: Request, _param: Params) -> Result<Response> {
     let body: Option<String> = req
         .body()
         .as_ref()

@@ -18,9 +18,9 @@ pub(crate) fn get_article_by_id(id: i64) -> Result<Option<Article>> {
 
     let db_url = get_db_url()?;
 
-    let sql = format!("SELECT * FROM public.articles WHERE id = {id}");
-    // let params = vec![ParameterValue::Int64(id)];
-    let rowset = pg::query(&db_url, &sql, &[])?;
+    let sql = "SELECT * FROM public.articles WHERE id = $1";
+    let params = vec![ParameterValue::Int64(id)];
+    let rowset = pg::query(&db_url, sql, &params)?;
 
     let resp: Option<Article> = rowset.rows.first().map(|row| row.try_into()).transpose()?;
 
@@ -29,7 +29,7 @@ pub(crate) fn get_article_by_id(id: i64) -> Result<Option<Article>> {
 
 pub(crate) fn save_articles(art: ArticleRequest) -> Result<u64> {
     let db_url = get_db_url()?;
-    let sql = "INSERT INTO public.articles (title, content, author, coauthor, category) VALUES (?, ?, ?, ?, ?)";
+    let sql = "INSERT INTO public.articles (title, content, author, coauthor, category) VALUES ($1, $2, $3, $4, $5) RETURNING id";
 
     let coauthor = &art.coauthor.as_deref();
     let coauthor_param = coauthor
