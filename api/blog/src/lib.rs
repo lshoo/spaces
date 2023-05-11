@@ -18,13 +18,13 @@ fn process(req: Request) -> Result<Response> {
 
     let mut router = Router::new();
 
-    router.get("/api/article/:id", blog::handle_get);
-    router.get("/api/article", blog::handle_list);
-    router.post("/api/article", blog::handle_save);
-    router.put("/api/article/:id", blog::handle_update);
-    router.delete("/api/article/:id", blog::handle_delete);
-    router.get("/api/pg_pid", pg_backend_pid);
-    router.any("/*", echo_wildcard);
+    router.get("/api//blog/article/:id", blog::handle_get);
+    router.get("/api/blog/article", blog::handle_list);
+    router.post("/api/blog/article", blog::handle_save);
+    router.put("/api/blog/article/:id", blog::handle_update);
+    router.delete("/api/blog/article/:id", blog::handle_delete);
+    router.get("/api/blog/pg_pid", pg_backend_pid);
+    router.any("/api/*", echo_wildcard);
 
     router.handle(req)
 }

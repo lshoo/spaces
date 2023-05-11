@@ -7,10 +7,13 @@ version = "1.0.5"
 
 [[component]]
 id = "spaces"
-source = "target/wasm32-wasi/release/spaces.wasm"
+source = "api/blog/target/wasm32-wasi/release/spaces.wasm"
 key_value_stores = ["default"]
 
 [component.trigger]
-route = "/..."
+route = "/api/blog/..."
 [component.build]
 command = "cargo build --target wasm32-wasi --release"
+workdir = "api/blog"
+watch = ["api/blog/src/**/*.rs", "api/blog/Cargo.toml", "spin.toml"]
+
