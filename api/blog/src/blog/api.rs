@@ -17,6 +17,10 @@ fn build_response_option(code: u16, body: Option<impl Into<String>>) -> Result<R
     Ok(http::Response::builder()
         .status(code)
         .header(http::header::CONTENT_TYPE, "application/json")
+        .header("Access-Control-Allow-Origin", "*")
+        .header("Access-Control-Allow-Methods", "*")
+        .header("Access-Control-Allow-Headers", "*")
+        .header("Access-Control-Max-Age", "86400")
         .body(body.map(|b| b.into().into()))?)
 }
 
