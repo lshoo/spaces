@@ -8,8 +8,8 @@ version = "1.0.5"
 
 
 [[component]]
-id = "spaces"
-source = "api/blog/target/wasm32-wasi/release/spaces.wasm"
+id = "blog"
+source = "api/blog/target/wasm32-wasi/release/blog.wasm"
 key_value_stores = ["default"]
 
 [component.trigger]
@@ -18,6 +18,18 @@ route = "/api/blog/..."
 command = "cargo build --target wasm32-wasi --release"
 workdir = "api/blog"
 watch = ["api/blog/src/**/*.rs", "api/blog/Cargo.toml", "spin.toml"]
+
+[[component]]
+id = "timeline"
+source = "api/timeline/target/wasm32-wasi/release/timeline.wasm"
+key_value_stores = ["default"]
+
+[component.trigger]
+route = "/api/timeline/..."
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
+workdir = "api/timeline"
+watch = ["api/timeline/src/**/*.rs", "api/timeline/Cargo.toml", "spin.toml"]
 
 [[component]]
 # source = { url = "https://github.com/fermyon/spin-fileserver/releases/download/v0.0.2/spin_static_fs.wasm", digest = "sha256:65456bf4e84cf81b62075e761b2b0afaffaef2d0aeda521b245150f76b96421b" }
