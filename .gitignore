@@ -10,3 +10,4 @@ target/wasm32-wasi/release/*
 
 Cargo.lock
 .spin
+.vscode

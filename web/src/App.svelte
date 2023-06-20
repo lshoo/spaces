@@ -1,6 +1,15 @@
 <script lang="ts">
+  import Clock from "./Clock.svelte";
+
   import ferrisLogo from '/ferris.png';
   import fermyonLogo from '/fermyon.png';
+
+  let name = "World";
+  let color = "red";
+
+  let upper = false;
+  $:greeting = `Hello ${name}!`;
+  $:casedGreeting = upper ? greeting.toUpperCase() : greeting;
 </script>
 
 <main>
@@ -12,9 +21,34 @@
     >
       <img src={ferrisLogo} class="logo svelte" alt="Ferris Logo" />
     </a>
+
     <a href="https://www.fermyon.com" target="_blank" rel="noreferrer">
       <img src={fermyonLogo} class="logo" alt="Fermyon Logo" />
-    </a>
+    </a>   
+    
+    <div>
+      <label for="name">Name</label>
+      <input id="name" bind:value={name} />
+    </div>
+    
+      
+    <div>
+      <label for="color">Color</label>
+      <input id="color" type="color" bind:value={color} />
+      <div style="background-color: {color}" class="swatch" />
+    </div>
+    
+    <div>
+      <label>
+        <input type="checkbox" bind:checked={upper} /> Uppercase
+      </label>
+    </div>
+    
+    
+    <h2 style="color: {color}">{casedGreeting}</h2>
+
+    <Clock color={color} />
+
   </div>
 
   
@@ -44,5 +78,13 @@
     float: left;
     min-width: 22%;
     border: 1px solid #ccc;
+  }
+  h2 {
+    color: red;
+  }
+  .swatch {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
   }
 </style>
