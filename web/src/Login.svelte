@@ -26,26 +26,26 @@
 
 <style>
     .buttons {
-        display: flex;
-        justify-content: space-between;
-
-        font-size: 1.5rem;
-        margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+  
+      font-size: 1.5rem;
+      margin-top: 1rem;
     }
-
+  
     form {
-        display: inline-block;
+      display: inline-block;
     }
-
+  
     input {
-        display: block;
-        margin-top: 0.3rem;
+      display: block;
+      margin-top: 0.3rem;
     }
-
+  
     label {
-        color: white;
-        display: block;
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
+      color: white;
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
     }
-</style>
+  </style>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import Clock from "./Clock.svelte";
   import Login from "./Login.svelte";
+  import Checklist from "./Checklist.svelte";
 
   import ferrisLogo from '/ferris.png';
   import fermyonLogo from '/fermyon.png';
@@ -52,6 +53,8 @@
 
     <h2 class="hero">Travel Packing Checklist</h2>
     <Login />
+
+    <Checklist />
 
   </div>
 
