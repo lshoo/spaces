@@ -1,5 +1,6 @@
 <script lang="ts">
   import Clock from "./Clock.svelte";
+  import Login from "./Login.svelte";
 
   import ferrisLogo from '/ferris.png';
   import fermyonLogo from '/fermyon.png';
@@ -49,12 +50,41 @@
 
     <Clock color={color} />
 
+    <h2 class="hero">Travel Packing Checklist</h2>
+    <Login />
+
   </div>
 
   
 </main>
 
 <style>
+  :global(body) {
+    background-color: cornflowerblue;
+  }
+
+  .hero {
+    --height: 7rem; /* 定义一个css变量 */
+
+    background-color: orange;
+    color: white;
+    font-size: 4rem;
+    height: var(--height);  /* 使用变量 */
+    line-height: var(--height);
+    margin: 0 0 3rem 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100vw;
+  }
+
+  main {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
   .logo {
     height: 6em;
     padding: 1.5em;
