@@ -1,7 +1,8 @@
-spin_version = "1"
+# spin_version = "1"
+spin_manifest_version = "1"
 authors = ["lshoo <lshoo36@gmail.com>"]
 description = "Things and thinks about lshoo"
-name = "lshoo"
+name = "htmx-example"
 trigger = { type = "http", base = "/" }
 version = "1.0.5"
 
@@ -41,3 +42,38 @@ route = "/..."
 [component.build]
 command = "npm run build"
 workdir = "web"
+
+# htmx example
+# [[component]]
+# id = "htmx-example"
+# source = "target/wasm32-wasi/release/htmx_example.wasm"
+# allowed_http_hosts = ["0.0.0.0:8000"]
+# [component.trigger]
+# # route = "/..."
+# route = "/htmx"
+# [component.build]
+# command = "cargo build --target wasm32-wasi --release"
+# watch = ["src/**/*.rs", "Cargo.toml"]
+
+
+# [[component]]
+# id = "clicked"
+# source = "htmx/clicked/target/wasm32-wasi/release/clicked.wasm"
+# allowed_http_hosts = []
+# [component.trigger]
+# route = "/htmx/clicked"
+# [component.build]
+# command = "cargo build --target wasm32-wasi --release"
+# workdir = "htmx/clicked"
+# watch = ["src/**/*.rs", "Cargo.toml"]
+
+# [[component]]
+# id = "gohome"
+# source = "/htmx/gohome/target/wasm32-wasi/release/go_home.wasm"
+# allowed_http_hosts = []
+# [component.trigger]
+# route = "/htmx/gohome"
+# [component.build]
+# command = "cargo build --target wasm32-wasi --release"
+# workdir = "htmx/gohome"
+# watch = ["src/**/*.rs", "Cargo.toml"]
